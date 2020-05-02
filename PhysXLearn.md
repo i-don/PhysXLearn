@@ -1,0 +1,118 @@
+# PhysXの勉強
+PhysXをWindows10で試してみる  
+### 道具立て（ソフト）  
+2020年3月時点で最新な感じ
+- PhysX  4.1
+- Microsoft Visual Studio Community 2019
+- DirectX Software Development Kit Version9.29.1962
+- python-3.8.2
+- CMake 3.17.0
+
+### 道具立て（ハード）
+- ASRock H97 Pro4
+- NE6206S018P2-1160A (GeForce RTX2060 SUPER DUAL 8GB) [PCIExp 8GB] ドスパラWeb限定モデル
+
+### 道具の導入
+1. PhysXの取得  
+githubからクローンを作成  
+リポジトリは<https://github.com/NVIDIAGameWorks/PhysX.git>  
+2. Visual Studioインストール  
+ダウンロードしてインストール  
+インストール時はC++を選択する  
+ダウンロード元は<https://visualstudio.microsoft.com/ja/thank-you-downloading-visual-studio/?sku=Community&rel=16>  
+3. DirectX SDKインストール  
+ダウンロードしてインストール  
+ダウンロード元は<https://www.microsoft.com/en-us/download/details.aspx?displaylang=en&id=6812>  
+4. pythonインストール  
+64bit版をダウンロードしてインストール  
+Pathの追加をチェックする  
+ダウンロード元は<https://www.python.org/downloads/>  
+5. CMakeインストール  
+64bit版をダウンロードしてインストール  
+Pathの追加をチェックする  
+ダウンロード元は<https://cmake.org/download/>  
+
+### PhysXのビルド
+1. プロジェクトの生成  
+PhysXのクローン内にある physx\generate_projects.bat を実行する  
+vc16win64を選択するために13を入力する  
+2. コード修正１  
+physx\source\foundation\include\PsAllocator.h を修正  
+エラーがモリモリ出るから  
+なぜならVisual Studio2019の標準準拠強化でtypeinfo.hが削除されたから  
+```C++:PsAllocator.h
+  #if(PX_WINDOWS_FAMILY || PX_XBOXONE)
+      #include <exception>
+  -  #include <typeinfo.h>
+  +  #if(_MSC_VER >= 1923)
+  +      #include <typeinfo>
+  +  #else
+  +      #include <typeinfo.h>
+  +  #endif
+  #endif
+```
+3. コード修正２  
+physx\samples\sampleframework\renderer\src\d3d11\D3D11RendererMemoryMacros.h を修正  
+エラーにならないように誤魔化す  
+deleteAllとdxSafeReleaseAllにnopを経由させる  
+```C++:D3D11RendererMemoryMacros.h
+   template<class T>
+  -  PX_INLINE void deleteAll( T& t ) { std::remove_if(t.begin(), t.end(), deleteAndReturnTrue<typename T::value_type>); };
+  +  PX_INLINE void nop(T t) { };
+  +  
+  +  template<class T>
+  -  PX_INLINE void dxSafeReleaseAll( T& t ) { std::remove_if(t.begin(), t.end(), dxReleaseAndReturnTrue<typename T::value_type>); };
+  +  PX_INLINE void deleteAll( T& t ) { nop(std::remove_if(t.begin(), t.end(), deleteAndReturnTrue<typename T::value_type>)); };
+  +  
+  +  template<class T>
+  +  PX_INLINE void dxSafeReleaseAll( T& t ) { nop(std::remove_if(t.begin(), t.end(), dxReleaseAndReturnTrue<typename T::value_type>)); };
+```  
+4. コード修正３  
+physx\samples\sampleframework\renderer\src\d3d11\D3D11RendererResourceManager.h を修正  
+チェックが厳しくてエラーになるのでデストラクタ追加  
+```C++:D3D11RendererResourceManager.h
+    class Proxy
+    {
+    public:
+        virtual const std::type_info& type_info() const = 0;
+        virtual Proxy *clone() const = 0;
+        virtual void release() = 0;
+  +    virtual ~Proxy() {}
+```  
+5. ビルド  
+PhysXのクローン内にある physx\compiler\vc16win64\PhysXSDK.sln  
+をVisual Studioで開く  
+release構成を選んでソリューションをリビルドする  
+
+### サンプルプログラムkaplademoのビルドと実行
+1. ソリューションのコピー  
+Visual Studio 2019用のソリューションがないので2017用をコピー  
+PhysXのクローン内にある kaplademo\source\compiler\vc15win64-PhysX_4.1 フォルダを  
+kaplademo\source\compiler\vc16win64-PhysX_4.1 にコピーする  
+2. ソリューションの再ターゲット  
+kaplademo\source\compiler\vc16win64-PhysX_4.1\KaplaDemo.sln  
+をVisual Studioで開く  
+ソリューション操作の再ターゲット ダイアログが表示されるので OKボタンで再ターゲットを実行  
+3. release構成を選ぶ  
+4. DemoFrameworkプロジェクトのプロパティ変更  
+	- 全般-出力ディレクトリ  
+./../../../bin/VC1***6***WIN64/RELEASE\  
+5. KaplaDemoプロジェクトのプロパティ変更  
+	- 全般-出力ディレクトリ  
+./../../../bin/VC1***6***WIN64/RELEASE\  
+	- リンカー-追加のライブラリ ディレクトリ  
+./../../../../physx/bin/win.x86_64.vc14***2***.mt/$(ConfigurationName)  
+./../../../externals/glew-1.13.0/lib/WIN64  
+./../../../externals/glut-3.7.6/lib/WIN64  
+./../../../externals/hbao+3.0/lib/WIN64  
+./../../../externals/cg/2.2/lib.x64  
+./../../../lib/VC1***6***WIN64  
+./../../../lib  
+	- リンカー-詳細設定-インポート ライブラリ  
+./../../../lib/VC1***6***WIN64/RELEASE/$(TargetName).lib  
+	- ビルド イベント-ビルド後のイベント-コマンドライン  
+..\physx64copy.bat ./../../../../physx/bin/win.x86_64.vc14***2***.mt ..\..\..\bin\VC1***6***WIN64 ../../../externals ../../../externals/glut-3.7.6/bin/WIN64 ../../../externals/cg/2.2/bin.x64 ../../../externals/hbao+3.0/lib/WIN64 -postbuildevent  
+6. ビルド  
+7. kaplademo実行  
+kaplademo\bin\VC16WIN64\RELEASE\KaplaDemo.exe  
+を実行して、PhysXとkaplademoが正しくビルドできていることを確認する  
