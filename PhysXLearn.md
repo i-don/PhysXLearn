@@ -7,6 +7,7 @@ PhysXをWindows10で試してみる
 - DirectX Software Development Kit Version9.29.1962
 - python-3.8.2
 - CMake 3.17.0
+- PhysX Visual Debugger Version 3.2019.04.26214843
 
 ### 道具立て（ハード）
 - ASRock H97 Pro4
@@ -31,6 +32,10 @@ Pathの追加をチェックする
 64bit版をダウンロードしてインストール  
 Pathの追加をチェックする  
 ダウンロード元は<https://cmake.org/download/>  
+6. PhysX Visual Debuggerインストール  
+ダウンロードしてインストール  
+ダウンロードにはNVIDIA accountの登録が必要  
+ダウンロード元は<https://developer.nvidia.com/physx-visual-debugger>  
 
 ### PhysXのビルド
 1. プロジェクトの生成  
@@ -116,3 +121,60 @@ kaplademo\source\compiler\vc16win64-PhysX_4.1\KaplaDemo.sln
 7. kaplademo実行  
 kaplademo\bin\VC16WIN64\RELEASE\KaplaDemo.exe  
 を実行して、PhysXとkaplademoが正しくビルドできていることを確認する  
+
+### PhysX Visual Debugger(PVD)使用の準備
+1. PhysXをcheckedビルド  
+PhysXのクローン内にある physx\compiler\vc16win64\PhysXSDK.sln  
+をVisual Studioで開く  
+checked構成を選んでソリューションをリビルドする  
+2. デバッグ対象のプロジェクト作成  
+Visual Studioで新規プロジェクトを作成する  
+テンプレートは　Windowsデスクトップアプリケーションとする  
+プロジェクトの構成（すべての構成）は次のように修正  
+
+|||プロパティ|値|
+|:-----|:-----|:-----|:-----|
+|C/C++|全般|追加のインクルードディレクトリ|(PhysXのクローン)\physx\include;(PhysXのクローン)\pxshared\include;(PhysXのクローン)\physx\source\common\src;(PhysXのクローン)\physx\source\foundation\include;(PhysXのクローン)\physx\snippets;(PhysXのクローン)\physx\snippets\graphics\include\win32\GL;%(AdditionalIncludeDirectories)|
+|リンカー|入力|追加の依存ファイル|(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXExtensions_static_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysX_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXPvdSDK_static_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXVehicle_static_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCharacterKinematic_static_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCooking_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCommon_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXFoundation_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\SnippetRender_static_64.lib;(PhysXのクローン)\physx\snippets\graphics\lib\win64\glut\glut32.lib;%(AdditionalDependencies)|
+
+3. 構成の追加  
+構成マネージャからデバッグ対象のプロジェクトに構成を追加する  
+checkedをDebugを元に新規作成する  
+プロジェクトの構成（checked）は次のように修正  
+
+|||プロパティ|値|
+|:-----|:-----|:-----|:-----|
+|C/C++|コード生成|ランタイムライブラリ|/MT|
+|C/C++|プリプロセッサ|プリプロセッサの定義|_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;NDEBUG;WIN32;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_CHECKED=1;PX_NVTX=0;PX_SUPPORT_PVD=1;CMAKE_INTDIR="checked";%(PreprocessorDefinitions)|
+
+### PhysX Visual Debugger(PVD)使用
+1. PVD起動  
+先にPVDを起動しておく
+2. PVD接続用コードを書く  
+デバッグ対象のプログラムにPVD接続用のコードを追加する  
+PxPvdオブジェクトを宣言  
+```C++
+PxPvd* gPvd = NULL;
+```
+初期化時にPVDに接続  
+PxPvdオブジェクトを生成し、PVDに接続、PxPhysics生成時に反映
+```C++
+	gPvd = PxCreatePvd(*gFoundation);
+	PxPvdTransport* transport = PxDefaultPvdSocketTransportCreate(PVD_HOST, 5425, 10);
+	gPvd->connect(*transport, PxPvdInstrumentationFlag::eALL);
+
+	gPhysics = PxCreatePhysics(PX_PHYSICS_VERSION, *gFoundation, PxTolerancesScale(), true, gPvd);
+```
+終了時にオブジェクトを開放
+```C++
+	if (gPvd)
+	{
+		PxPvdTransport* transport = gPvd->getTransport();
+		gPvd->release();	gPvd = NULL;
+		PX_RELEASE(transport);
+	}
+```
+3. 実行  
+デバッグ対象のプログラムを実行する  
+PVDにレンダリング結果が表示されれば接続できていることが確認できた  
+デバッグ対象のプログラムを終了すると、PVDでProfile結果が確認できる  
