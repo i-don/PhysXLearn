@@ -103,8 +103,6 @@ void cleanupPhysics(bool /*interactive*/)
 		PX_RELEASE(transport);
 	}
 	PX_RELEASE(gFoundation);
-
-	printf("HelloWorld done.\n");
 }
 
 void keyPress(unsigned char key, const PxTransform& camera)

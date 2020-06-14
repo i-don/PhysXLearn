@@ -1,36 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PhysXDir>C:\dev\PhysX</PhysXDir>
+  </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="checked|Win32">
-      <Configuration>checked</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="checked|x64">
       <Configuration>checked</Configuration>
       <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug|Win32">
-      <Configuration>Debug</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="profile|Win32">
-      <Configuration>profile</Configuration>
-      <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="profile|x64">
       <Configuration>profile</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|Win32">
-      <Configuration>Release</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug|x64">
-      <Configuration>Debug</Configuration>
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|x64">
-      <Configuration>Release</Configuration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
@@ -42,164 +29,174 @@
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='checked|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='profile|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='checked|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
+    <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='profile|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='checked|Win32'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='profile|Win32'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='checked|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='profile|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='checked|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>
+    </TargetExt>
+    <ExecutablePath>$(VC_ExecutablePath_x64);$(CommonExecutablePath)</ExecutablePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <ReferencePath>$(VC_ReferencesPath_x64);</ReferencePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <LibraryWPath>$(WindowsSDK_MetadataPath);</LibraryWPath>
+    <SourcePath>$(VC_SourcePath);</SourcePath>
+    <ExcludePath>$(CommonExcludePath);$(VC_ExecutablePath_x64);$(VC_LibraryPath_x64)</ExcludePath>
+    <ExtensionsToDeleteOnClean>
+    </ExtensionsToDeleteOnClean>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <GenerateManifest>true</GenerateManifest>
+    <EmbedManifest>true</EmbedManifest>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <EnableMicrosoftCodeAnalysis>true</EnableMicrosoftCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>false</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='checked|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <TargetExt>
+    </TargetExt>
+    <ExecutablePath>$(VC_ExecutablePath_x64);$(CommonExecutablePath)</ExecutablePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <ReferencePath>$(VC_ReferencesPath_x64);</ReferencePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <LibraryWPath>$(WindowsSDK_MetadataPath);</LibraryWPath>
+    <SourcePath>$(VC_SourcePath);</SourcePath>
+    <ExcludePath>$(CommonExcludePath);$(VC_ExecutablePath_x64);$(VC_LibraryPath_x64)</ExcludePath>
+    <ExtensionsToDeleteOnClean>
+    </ExtensionsToDeleteOnClean>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <GenerateManifest>true</GenerateManifest>
+    <EmbedManifest>true</EmbedManifest>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <EnableMicrosoftCodeAnalysis>true</EnableMicrosoftCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>false</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='profile|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>
+    </TargetExt>
+    <ExecutablePath>$(VC_ExecutablePath_x64);$(CommonExecutablePath)</ExecutablePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <ReferencePath>$(VC_ReferencesPath_x64);</ReferencePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <LibraryWPath>$(WindowsSDK_MetadataPath);</LibraryWPath>
+    <SourcePath>$(VC_SourcePath);</SourcePath>
+    <ExcludePath>$(CommonExcludePath);$(VC_ExecutablePath_x64);$(VC_LibraryPath_x64)</ExcludePath>
+    <ExtensionsToDeleteOnClean>
+    </ExtensionsToDeleteOnClean>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <GenerateManifest>true</GenerateManifest>
+    <EmbedManifest>true</EmbedManifest>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <EnableMicrosoftCodeAnalysis>true</EnableMicrosoftCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>false</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='profile|x64'">
-    <LinkIncremental>false</LinkIncremental>
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>
+    </TargetExt>
+    <ExecutablePath>$(VC_ExecutablePath_x64);$(CommonExecutablePath)</ExecutablePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <ReferencePath>$(VC_ReferencesPath_x64);</ReferencePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <LibraryWPath>$(WindowsSDK_MetadataPath);</LibraryWPath>
+    <SourcePath>$(VC_SourcePath);</SourcePath>
+    <ExcludePath>$(CommonExcludePath);$(VC_ExecutablePath_x64);$(VC_LibraryPath_x64)</ExcludePath>
+    <ExtensionsToDeleteOnClean>
+    </ExtensionsToDeleteOnClean>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <GenerateManifest>true</GenerateManifest>
+    <EmbedManifest>true</EmbedManifest>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <EnableMicrosoftCodeAnalysis>true</EnableMicrosoftCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>false</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='checked|Win32'">
-    <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\dev\PhysX\physx\include;C:\dev\PhysX\pxshared\include;C:\dev\PhysX\physx\source\common\src;C:\dev\PhysX\physx\source\foundation\include;C:\dev\PhysX\physx\snippets;C:\dev\PhysX\physx\snippets\graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>
+      </SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;WIN32;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_DEBUG=1;PX_CHECKED=1;PX_NVTX=0;PX_SUPPORT_PVD=1;CMAKE_INTDIR="debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <AdditionalIncludeDirectories>$(PhysXDir)\physx\include;$(PhysXDir)\pxshared\include;$(PhysXDir)\physx\source\common\src;$(PhysXDir)\physx\source\foundation\include;$(PhysXDir)\physx\snippets;$(PhysXDir)\physx\snippets\graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <StringPooling>true</StringPooling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>true</OmitFramePointers>
+      <BasicRuntimeChecks>UninitializedLocalUsageCheck</BasicRuntimeChecks>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4514;4820;4127;4710;4711;4577;4996</DisableSpecificWarnings>
+      <UseFullPaths>false</UseFullPaths>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXExtensions_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysX_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXPvdSDK_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXVehicle_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCharacterKinematic_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCooking_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCommon_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXFoundation_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\SnippetRender_static_64.lib;C:\dev\PhysX\physx\snippets\graphics\lib\win64\glut\glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXExtensions_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysX_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXPvdSDK_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXVehicle_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCharacterKinematic_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCooking_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCommon_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXFoundation_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\SnippetRender_static_64.lib;$(PhysXDir)\physx\snippets\graphics\lib\win64\glut\glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <ResourceCompile>
       <Culture>0x0411</Culture>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>$(SolutionDir)/physx64copy.bat C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration) $(SolutionDir)$(Platform)\$(Configuration)\ -postbuildevent</Command>
+      <Command>$(SolutionDir)/physx64copy.bat $(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration) $(SolutionDir)$(Platform)\$(Configuration)\ -postbuildevent</Command>
     </PostBuildEvent>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='checked|x64'">
     <ClCompile>
@@ -209,7 +206,7 @@
       </SDLCheck>
       <PreprocessorDefinitions>_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;NDEBUG;WIN32;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_CHECKED=1;PX_NVTX=0;PX_SUPPORT_PVD=1;CMAKE_INTDIR="checked";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\dev\PhysX\physx\include;C:\dev\PhysX\pxshared\include;C:\dev\PhysX\physx\source\common\src;C:\dev\PhysX\physx\source\foundation\include;C:\dev\PhysX\physx\snippets;C:\dev\PhysX\physx\snippets\graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PhysXDir)\physx\include;$(PhysXDir)\pxshared\include;$(PhysXDir)\physx\source\common\src;$(PhysXDir)\physx\source\foundation\include;$(PhysXDir)\physx\snippets;$(PhysXDir)\physx\snippets\graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <StringPooling>true</StringPooling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -229,108 +226,111 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXExtensions_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysX_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXPvdSDK_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXVehicle_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCharacterKinematic_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCooking_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCommon_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXFoundation_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\SnippetRender_static_64.lib;C:\dev\PhysX\physx\snippets\graphics\lib\win64\glut\glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXExtensions_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysX_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXPvdSDK_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXVehicle_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCharacterKinematic_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCooking_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCommon_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXFoundation_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\SnippetRender_static_64.lib;$(PhysXDir)\physx\snippets\graphics\lib\win64\glut\glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <ResourceCompile>
       <Culture>0x0411</Culture>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>$(SolutionDir)/physx64copy.bat C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration) $(SolutionDir)$(Platform)\$(Configuration)\ -postbuildevent</Command>
+      <Command>$(SolutionDir)/physx64copy.bat $(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration) $(SolutionDir)$(Platform)\$(Configuration)\ -postbuildevent</Command>
     </PostBuildEvent>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='profile|Win32'">
-    <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
       <FunctionLevelLinking>
       </FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\dev\PhysX\physx\include;C:\dev\PhysX\pxshared\include;C:\dev\PhysX\physx\source\common\src;C:\dev\PhysX\physx\source\foundation\include;C:\dev\PhysX\physx\snippets;C:\dev\PhysX\physx\snippets\graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>
+      </SDLCheck>
+      <PreprocessorDefinitions>_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;NDEBUG;WIN32;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_SUPPORT_PVD=0;CMAKE_INTDIR="release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <AdditionalIncludeDirectories>$(PhysXDir)\physx\include;$(PhysXDir)\pxshared\include;$(PhysXDir)\physx\source\common\src;$(PhysXDir)\physx\source\foundation\include;$(PhysXDir)\physx\snippets;$(PhysXDir)\physx\snippets\graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FloatingPointModel>Fast</FloatingPointModel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>true</OmitFramePointers>
+      <Optimization>Full</Optimization>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4514;4820;4127;4710;4711;4577;4996</DisableSpecificWarnings>
+      <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <OptimizeReferences>
+      </OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXExtensions_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysX_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXPvdSDK_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXVehicle_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCharacterKinematic_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCooking_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCommon_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXFoundation_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\SnippetRender_static_64.lib;C:\dev\PhysX\physx\snippets\graphics\lib\win64\glut\glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXExtensions_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysX_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXPvdSDK_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXVehicle_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCharacterKinematic_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCooking_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCommon_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXFoundation_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\SnippetRender_static_64.lib;$(PhysXDir)\physx\snippets\graphics\lib\win64\glut\glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>
-      <Command>$(SolutionDir)/physx64copy.bat C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration) $(SolutionDir)$(Platform)\$(Configuration)\ -postbuildevent</Command>
+      <Command>$(SolutionDir)/physx64copy.bat $(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration) $(SolutionDir)$(Platform)\$(Configuration)\ -postbuildevent</Command>
     </PostBuildEvent>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Manifest>
+      <OutputManifestFile />
+    </Manifest>
+    <ManifestResourceCompile>
+      <ResourceOutputFileName />
+    </ManifestResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='profile|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
       <FunctionLevelLinking>
       </FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\dev\PhysX\physx\include;C:\dev\PhysX\pxshared\include;C:\dev\PhysX\physx\source\common\src;C:\dev\PhysX\physx\source\foundation\include;C:\dev\PhysX\physx\snippets;C:\dev\PhysX\physx\snippets\graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>
+      </SDLCheck>
+      <PreprocessorDefinitions>_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;NDEBUG;WIN32;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_PROFILE=1;PX_NVTX=0;PX_SUPPORT_PVD=1;CMAKE_INTDIR="profile";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <AdditionalIncludeDirectories>$(PhysXDir)\physx\include;$(PhysXDir)\pxshared\include;$(PhysXDir)\physx\source\common\src;$(PhysXDir)\physx\source\foundation\include;$(PhysXDir)\physx\snippets;$(PhysXDir)\physx\snippets\graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FloatingPointModel>Fast</FloatingPointModel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>true</OmitFramePointers>
+      <Optimization>Full</Optimization>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4514;4820;4127;4710;4711;4577;4996</DisableSpecificWarnings>
+      <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <OptimizeReferences>
+      </OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXExtensions_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysX_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXPvdSDK_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXVehicle_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCharacterKinematic_static_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCooking_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCommon_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXFoundation_64.lib;C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration)\SnippetRender_static_64.lib;C:\dev\PhysX\physx\snippets\graphics\lib\win64\glut\glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXExtensions_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysX_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXPvdSDK_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXVehicle_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCharacterKinematic_static_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCooking_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCommon_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXFoundation_64.lib;$(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\SnippetRender_static_64.lib;$(PhysXDir)\physx\snippets\graphics\lib\win64\glut\glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>
-      <Command>$(SolutionDir)/physx64copy.bat C:\dev\PhysX\physx\bin\win.x86_64.vc142.mt\$(Configuration) $(SolutionDir)$(Platform)\$(Configuration)\ -postbuildevent</Command>
+      <Command>$(SolutionDir)/physx64copy.bat $(PhysXDir)\physx\bin\win.x86_64.vc142.mt\$(Configuration) $(SolutionDir)$(Platform)\$(Configuration)\ -postbuildevent</Command>
     </PostBuildEvent>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Physics.cpp" />
