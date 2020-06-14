@@ -79,8 +79,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <TargetExt>
-    </TargetExt>
+    <TargetExt>.exe</TargetExt>
     <ExecutablePath>$(VC_ExecutablePath_x64);$(CommonExecutablePath)</ExecutablePath>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <ReferencePath>$(VC_ReferencesPath_x64);</ReferencePath>
@@ -99,8 +98,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='checked|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <TargetExt>
-    </TargetExt>
+    <TargetExt>.exe</TargetExt>
     <ExecutablePath>$(VC_ExecutablePath_x64);$(CommonExecutablePath)</ExecutablePath>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <ReferencePath>$(VC_ReferencesPath_x64);</ReferencePath>
@@ -119,8 +117,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <TargetExt>
-    </TargetExt>
+    <TargetExt>.exe</TargetExt>
     <ExecutablePath>$(VC_ExecutablePath_x64);$(CommonExecutablePath)</ExecutablePath>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <ReferencePath>$(VC_ReferencesPath_x64);</ReferencePath>
@@ -139,8 +136,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='profile|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <TargetExt>
-    </TargetExt>
+    <TargetExt>.exe</TargetExt>
     <ExecutablePath>$(VC_ExecutablePath_x64);$(CommonExecutablePath)</ExecutablePath>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <ReferencePath>$(VC_ReferencesPath_x64);</ReferencePath>

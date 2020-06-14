@@ -122,6 +122,12 @@ kaplademo\source\compiler\vc16win64-PhysX_4.1\KaplaDemo.sln
 kaplademo\bin\VC16WIN64\RELEASE\KaplaDemo.exe  
 を実行して、PhysXとkaplademoが正しくビルドできていることを確認する  
 
+### プロジェクトのテンプレート
+プロジェクトの設定を毎回しないようにテンプレートを作成した  
+PhysXLearn.zipがテンプレートで、PhysXLearnプロジェクトをエクスポートしたもの  
+PhysXLearn.zipを %USERPROFILE%\Documents\Visual Studio 2019\My Exported Templates  
+に配置することでテンプレートが利用可能となる  
+
 ### PhysX Visual Debugger(PVD)使用の準備
 1. PhysXをcheckedビルド  
 PhysXのクローン内にある physx\compiler\vc16win64\PhysXSDK.sln  
@@ -129,23 +135,7 @@ PhysXのクローン内にある physx\compiler\vc16win64\PhysXSDK.sln
 checked構成を選んでソリューションをリビルドする  
 2. デバッグ対象のプロジェクト作成  
 Visual Studioで新規プロジェクトを作成する  
-テンプレートは　Windowsデスクトップアプリケーションとする  
-プロジェクトの構成（すべての構成）は次のように修正  
-
-|||プロパティ|値|
-|:-----|:-----|:-----|:-----|
-|C/C++|全般|追加のインクルードディレクトリ|(PhysXのクローン)\physx\include;(PhysXのクローン)\pxshared\include;(PhysXのクローン)\physx\source\common\src;(PhysXのクローン)\physx\source\foundation\include;(PhysXのクローン)\physx\snippets;(PhysXのクローン)\physx\snippets\graphics\include\win32\GL;%(AdditionalIncludeDirectories)|
-|リンカー|入力|追加の依存ファイル|(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXExtensions_static_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysX_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXPvdSDK_static_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXVehicle_static_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCharacterKinematic_static_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCooking_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXCommon_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\PhysXFoundation_64.lib;(PhysXのクローン)\physx\bin\win.x86_64.vc142.mt\$(Configuration)\SnippetRender_static_64.lib;(PhysXのクローン)\physx\snippets\graphics\lib\win64\glut\glut32.lib;%(AdditionalDependencies)|
-
-3. 構成の追加  
-構成マネージャからデバッグ対象のプロジェクトに構成を追加する  
-checkedをDebugを元に新規作成する  
-プロジェクトの構成（checked）は次のように修正  
-
-|||プロパティ|値|
-|:-----|:-----|:-----|:-----|
-|C/C++|コード生成|ランタイムライブラリ|/MT|
-|C/C++|プリプロセッサ|プリプロセッサの定義|_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;NDEBUG;WIN32;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_CHECKED=1;PX_NVTX=0;PX_SUPPORT_PVD=1;CMAKE_INTDIR="checked";%(PreprocessorDefinitions)|
+テンプレートは PhysXLearn とする  
 
 ### PhysX Visual Debugger(PVD)使用
 1. PVD起動  
